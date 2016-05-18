@@ -22,6 +22,12 @@ and open the template in the editor.
         if (!$conn){
             die("connection failed:".mysqli_connect_error());
         }
+        //countries->html
+//        $country="SELECT name FROM country";
+//        $queryc=  mysql_query($country);
+//        while($row= mysql_fetch_array($query)){
+//            echo"$row[name]";
+//        }
         $name=$_POST["name"];
         $email=$_POST["email"];
         $country_id=2;
