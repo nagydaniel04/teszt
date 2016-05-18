@@ -30,7 +30,7 @@ and open the template in the editor.
 //        }
         $name=$_POST["name"];
         $email=$_POST["email"];
-        $country_id=2;
+        $country_id=$_POST["country"];
         $county_id=2;
         $sql="INSERT INTO person(name, email, country_id,county_id)
             VALUES('$name','$email','$country_id','$county_id')";
