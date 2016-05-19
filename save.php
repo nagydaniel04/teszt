@@ -21,22 +21,31 @@
         $country_id=$_POST["country"];
         $county_id=$_POST["county"];
         //validation
-        $isname="/^[A-ZÁÉÚŰŐÓÜÖÍ][a-zéáűőúöüóí]+ [A-ZÁÉÚŰŐÓÜÖÍ][a-zéáűőúöüóí]+$/";
+        $isname="/^[A-Z][a-z]+ [A-Z][a-z]+$/";
+        $okname=1;
+        $okmail=1;
         if (empty($name)||!preg_match($isname,$name)||strlen($name)>30 ) {
-            echo 'Incorrect name';
+            echo 'Incorrect name<br>';
+            $okname=0;
         }
-        if(empty($email)||strlen($email)>30||(filter_var($email, FILTER_VALIDATE_EMAIL) === false)){
-            echo 'Incorrect email';
+        if (empty($email)||strlen($email)>30||(filter_var($email, FILTER_VALIDATE_EMAIL) === false)){
+            echo 'Incorrect email<br>';
+            $okmail=0;
         }
-                //!preg_match_all("^[A-Za-z0-9]+@[a-z]+\.[a-z]$",$email, $passw))
-        $sql="INSERT INTO person(name, email, country_id,county_id)
-            VALUES('$name','$email','$country_id','$county_id')";
-        if(mysqli_query($conn,$sql)){
-            echo "Succes";
+        if($okname&&$okmail) {
+                $sql="INSERT INTO person(name, email, country_id,county_id)
+                VALUES('$name','$email','$country_id','$county_id')";
+                if(mysqli_query($conn,$sql)){
+                    echo "Succes";
+                }
+                else{
+                    echo "Fail";
+                }
         }
         else{
-            echo "Fail";
+            include 'index.php';
         }
+        
         ?>
     </body>
 </html>
