@@ -11,6 +11,8 @@
                     url:"countysearch.php",
                     method:"POST",
                     data: {id: $("#country").val()}
+                }).success(function(result){
+                    $("#county").html(result);             
                 })
             });
         });
@@ -50,8 +52,6 @@
                 </select>
                 <label for="county" id="countyl">County:</label>
                 <select class="form-control" id="county" name="county">
-                    
-                    <option>hello</option>
                 </select>
             </fieldset>
             <input class="btn" type="submit" name="submit" value="Submit">
