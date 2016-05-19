@@ -36,7 +36,6 @@
             $okmail=0;
         }
         if($country_id=='default'){
-            //echo '<option value='.$country_id.' selected></option>';
             $okcountry=0;
         }
         if($county_id=='default'){

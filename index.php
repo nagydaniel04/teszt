@@ -23,7 +23,7 @@
             <fieldset class="form-group">
                 <label for="name">Name:</label>
                 <?php if(true): ?>
-                <input value="<?php echo $name; ?>" class="form-control" id="name" type="text" name="name">
+                <input value="<?php if(isset($name))echo $name; ?>" class="form-control" id="name" type="text" name="name">
                 <?php endif; ?>
                 <?php    if(isset($okname)){
                         if($okname==0){
@@ -35,7 +35,7 @@
             <fieldset class="form-group">
                 <label for="email">Email:</label>
                 <?php if(true): ?>
-                <input value="<?php echo $email; ?>" class="form-control" id="email" type="text" name="email">
+                <input value="<?php if(isset($email)) echo $email; ?>" class="form-control" id="email" type="text" name="email">
                 <?php endif; ?>
                 <?php
                     if(isset($okmail)){
