@@ -4,9 +4,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
         <script>
           $(document).ready(function(){
-            $("#county,#countyl").hide();
+            $("#hidden").hide();
             $("#country").change(function(){               
-                $("#county,#countyl").show();
+                $("#hidden").show();
                 $.ajax({
                     url:"countysearch.php",
                     method:"POST",
@@ -22,15 +22,33 @@
         <form method="POST" action="save.php" class="form">
             <fieldset class="form-group">
                 <label for="name">Name:</label>
-                <input class="form-control" id="name" type="text" name="name"><br>
+                <?php if(true): ?>
+                <input value="<?php echo $name; ?>" class="form-control" id="name" type="text" name="name">
+                <?php endif; ?>
+                <?php    if(isset($okname)){
+                        if($okname==0){
+                            echo '<p style="color:red;">***Incorrect name</p>';
+                        }
+                    }
+                ?>
             </fieldset>
             <fieldset class="form-group">
                 <label for="email">Email:</label>
-                <input class="form-control" id="email" type="text" name="email"><br>
+                <?php if(true): ?>
+                <input value="<?php echo $email; ?>" class="form-control" id="email" type="text" name="email">
+                <?php endif; ?>
+                <?php
+                    if(isset($okmail)){
+                        if($okmail==0){
+                            echo '<p style="color:red;">***Incorrect email</p>';
+                        }
+                    }
+                ?>
             </fieldset>
             <fieldset class="form-group">
                 <label for="country">Country:</label>
                 <select class="form-control" id="country" name="country">
+                    <option value="default">Choose your Country...</option>
                 <?php $servername="localhost";
                     $user="root";
                     $passw="";
@@ -50,9 +68,26 @@
                      }
                  ?>
                 </select>
-                <label for="county" id="countyl">County:</label>
+                 <?php
+                    if(isset($okcountry)){
+                        if($okcountry==0){
+                            echo '<p style="color:red;">***Choose your Country</p>';
+                        }
+                    }
+                ?>
+                <span id="hidden"> 
+                <label for="county" id="countyl">County:</label>                   
                 <select class="form-control" id="county" name="county">
+                    <option value="default"></option>
                 </select>
+                <?php
+                    if(isset($okcounty)){
+                        if($okcounty==0){
+                            echo '<p style="color:red;">***Choose your County</p>';
+                        }
+                    }
+                    ?>
+                </span>
             </fieldset>
             <input class="btn" type="submit" name="submit" value="Submit">
         </form>

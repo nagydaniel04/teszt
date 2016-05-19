@@ -13,6 +13,7 @@
     }
     $sql = "SELECT name, id FROM county WHERE country_id=$cid";
     $result = mysqli_query($conn, $sql);
+    echo '<option value="default">Choose your County...</option>';
     while ($row = mysqli_fetch_array($result)) {
         echo'<option value=' . $row["id"] . '>' . $row["name"] . '</option>';
     }

@@ -24,15 +24,25 @@
         $isname="/^[A-Z][a-z]+ [A-Z][a-z]+$/";
         $okname=1;
         $okmail=1;
+        $okcountry=1;
+        $okcounty=1;        
         if (empty($name)||!preg_match($isname,$name)||strlen($name)>30 ) {
-            echo 'Incorrect name<br>';
+            //echo 'Incorrect name<br>';
             $okname=0;
         }
-        if (empty($email)||strlen($email)>30||(filter_var($email, FILTER_VALIDATE_EMAIL) === false)){
-            echo 'Incorrect email<br>';
+        if (empty($email)||strlen($email)>30
+                ||(filter_var($email, FILTER_VALIDATE_EMAIL) === false)){
+            //echo 'Incorrect email<br>';
             $okmail=0;
         }
-        if($okname&&$okmail) {
+        if($country_id=='default'){
+            //echo '<option value='.$country_id.' selected></option>';
+            $okcountry=0;
+        }
+        if($county_id=='default'){
+            $okcounty=0;
+        }
+        if($okname&&$okmail&&$okcountry&&$okcounty) {
                 $sql="INSERT INTO person(name, email, country_id,county_id)
                 VALUES('$name','$email','$country_id','$county_id')";
                 if(mysqli_query($conn,$sql)){
