@@ -13,8 +13,15 @@
     }
     $sql = "SELECT name, id FROM county WHERE country_id=$cid";
     $result = mysqli_query($conn, $sql);
-    echo '<option value="default">Choose your County...</option>';
+    echo '<option value="default" selected>Choose your County...</option>';
+    $i=0;
     while ($row = mysqli_fetch_array($result)) {
-        echo'<option value=' . $row["id"] . '>' . $row["name"] . '</option>';
+        $i+=1;
+        if($i==$county_id){
+            echo'<option value=' . $row["id"] . ' selected >' . $row["name"] . '</option>';
+        }
+        else{
+            echo'<option value=' . $row["id"] . '>' . $row["name"] . '</option>';
+        }
     }
 ?>

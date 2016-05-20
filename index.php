@@ -64,7 +64,18 @@
                      $i=0;
                      while($row= mysqli_fetch_array($result)){
                         $i+=1;
-                        echo'<option value='.$i.'>'.$row["name"].'</option>';                        
+                        if(isset($okcountry)){
+                            if($i==$country_id){
+                                echo'<option value='.$i.' selected>'.$row["name"].'</option>';
+                            }
+                            else{
+                                 echo'<option value='.$i.'>'.$row["name"].'</option>';
+                            }
+                        }
+                        else{
+                            echo'<option value='.$i.'>'.$row["name"].'</option>';
+                        }
+                                               
                      }
                  ?>
                 </select>
@@ -74,19 +85,20 @@
                             echo '<p style="color:red;">***Choose your Country</p>';
                         }
                     }
-                ?>
+                ?>                           
                 <span id="hidden"> 
-                <label for="county" id="countyl">County:</label>                   
-                <select class="form-control" id="county" name="county">
-                    <option value="default"></option>
-                </select>
+                    <label for="county" id="countyl">County:</label>                   
+                    <select class="form-control" id="county" name="county">
+                        <option value="default"></option>
+                    </select>
+                </span>
                 <?php
                     if(isset($okcounty)){
                         if($okcounty==0){
                             echo '<p style="color:red;">***Choose your County</p>';
                         }
                     }
-                    ?>
+                ?>
                 </span>
             </fieldset>
             <input class="btn" type="submit" name="submit" value="Submit">

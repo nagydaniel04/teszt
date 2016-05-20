@@ -38,6 +38,7 @@
         if($country_id=='default'){
             $okcountry=0;
         }
+        //echo '<option value='.$country_id.' selected></option>';
         if($county_id=='default'){
             $okcounty=0;
         }
