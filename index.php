@@ -80,18 +80,32 @@
                  ?>
                 </select>
                  <?php
-                    if(isset($okcountry)){
-                        if($okcountry==0){
+                    if(isset($okcountry)):
+                        if($okcountry==0):
+                            echo '';
                             echo '<p style="color:red;">***Choose your Country</p>';
-                        }
-                    }
-                ?>                           
-                <span id="hidden"> 
-                    <label for="county" id="countyl">County:</label>                   
-                    <select class="form-control" id="county" name="county">
-                        <option value="default"></option>
-                    </select>
-                </span>
+                        else:?>
+                             <label for="county" id="countyl">County:</label>                   
+                            <select class="form-control" id="county" name="county">                            
+                            <?php
+                            $_POST["id"]=$country_id;
+                            include 'countysearch.php';
+                            //echo'hello';
+                            ?>
+                            </select>
+                            <?php 
+                        endif;
+                    else:?>
+                            <span id="hidden">
+                            <label for="county" id="countyl">County:</label>                   
+                            <select class="form-control" id="county" name="county">
+                                <option value="default"></option>
+                            </select>
+                            </span>
+                    <?php 
+                       // echo"hello";  
+                    endif; 
+                    ?>
                 <?php
                     if(isset($okcounty)){
                         if($okcounty==0){
