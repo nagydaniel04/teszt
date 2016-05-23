@@ -15,6 +15,7 @@
                     $("#county").html(result);             
                 })
             });
+        });
         </script>      
         <!--  js valdation -->
         <script>
