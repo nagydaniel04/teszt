@@ -16,10 +16,41 @@
                 })
             });
         });
-        </script>       
+        </script>      
+        <!--  js valdation -->
+        <script>
+            $(document).ready(function(){
+                $(".form").submit(function(event){
+                    //nev
+                    var name=$("#name").val();
+                    //alert(name);
+                    var resn=name.match(/[A-Z][a-z]+ [A-Z][a-z]+/g);
+                    //alert(res);
+                    if(!resn){
+                        event.preventDefault();
+                        alert("nem helyes a nev");
+                    }
+                    else{
+                        //alert("helyes a nev");
+                    }
+                    //email
+                    var email=$("#email").val();
+                    //alert(email);
+                    var rese=email.match(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/);
+                    //alert(rese);
+                    if(!rese){
+                        event.preventDefault();
+                        alert("nem helyes az email");
+                    }
+                    else{
+                        //alert("helyes az email");
+                    }
+                });
+            });
+        </script>
     </head>
     <body>
-        <form method="POST" action="save.php" class="form">
+        <form  method="POST" action="save.php" class="form">
             <fieldset class="form-group">
                 <label for="name">Name:</label>
                 <?php if(true): ?>
