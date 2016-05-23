@@ -15,7 +15,6 @@
                     $("#county").html(result);             
                 })
             });
-        });
         </script>      
         <!--  js valdation -->
         <script>
@@ -44,6 +43,21 @@
                     }
                     else{
                         //alert("helyes az email");
+                    }
+                    //country
+                    if($("#country").val()=='default'){
+                        event.preventDefault();
+                        alert('nincs kivalasztva orszag');
+                    }
+                    else{
+                        //alert('ki van valsztva az orszag');
+                    }
+                    if($("#county").val()=='default'){
+                        event.preventDefault();
+                        alert('nincs kivalasztva megye');
+                    }
+                    else{
+                        //alert('ki van valsztva a megye');
                     }
                 });
             });
